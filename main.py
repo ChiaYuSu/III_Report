@@ -28,6 +28,27 @@ def inputcase():
     
     return num, case
 
+# # For SSL certificate
+# def certificate():
+#     num, _ = inputcase()
+#     ssl._create_default_https_context = ssl._create_unverified_context
+#     src = "https://raw.githubusercontent.com/ChiaYuSu/III/master/20200702/" + num + "/case.json"
+#     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
+
+#     request = req.Request(src, headers={
+#         "User-Agent": user_agent
+#     })
+    
+#     return request
+
+# # Read json (For URL)
+# def data():
+#     with req.urlopen(certificate()) as response:
+#         data = json.load(response)
+#     data = sorted(data, key=lambda k: k['time'])  # Json sorted by time
+    
+#     return data
+
 # Read json
 def data():
     num, _ = inputcase()
@@ -586,43 +607,43 @@ def final_score():
     config.sections()
     config.read('conf.ini')
     score = 0
-    if f1 > config['feature 1']['high_risk']:
+    if f1 > int(config['feature 1']['high_risk']):
         score += 0
-    elif f1 <= config['feature 1']['low_risk']:
+    elif f1 <= int(config['feature 1']['low_risk']):
         score += 1
-    if f2 > config['feature 2']['high_risk']:
+    if f2 > int(config['feature 2']['high_risk']):
         score += 0
-    elif f2 <= config['feature 2']['low_risk']:
+    elif f2 <= int(config['feature 2']['low_risk']):
         score += 1
-    if f3 >= config['feature 3']['low_risk']:
+    if f3 >= int(config['feature 3']['low_risk']):
         score += 1
-    elif f3 >= config['feature 3']['middle_risk_1'] and f3 < config['feature 3']['middle_risk_2']:
+    elif f3 >= int(config['feature 3']['middle_risk_1']) and f3 < int(config['feature 3']['middle_risk_2']):
         score += 0.5
-    elif f3 < config['feature 3']['high_risk']:
+    elif f3 < int(config['feature 3']['high_risk']):
         score += 0
-    if f4 >= config['feature 4']['high_risk']:
+    if f4 >= int(config['feature 4']['high_risk']):
         score += 0
-    elif f4 >= config['feature 4']['middle_risk_1'] and f4 < config['feature 4']['middle_risk_2']:
+    elif f4 >= int(config['feature 4']['middle_risk_1']) and f4 < int(config['feature 4']['middle_risk_2']):
         score += 0.5
-    elif f4 >= config['feature 4']['low_risk_1'] and f4 < config['feature 4']['low_risk_2']:
+    elif f4 >= int(config['feature 4']['low_risk_1']) and f4 < int(config['feature 4']['low_risk_2']):
         score += 1
-    if f5 <= config['feature 5']['low_risk']:
+    if f5 <= int(config['feature 5']['low_risk']):
         score += 1
-    elif f5 > config['feature 5']['middle_risk_1'] and f5 <= config['feature 5']['middle_risk_2']:
+    elif f5 > int(config['feature 5']['middle_risk_1']) and f5 <= int(config['feature 5']['middle_risk_2']):
         score += 0.5
-    elif f5 > config['feature 5']['high_risk']:
+    elif f5 > int(config['feature 5']['high_risk']):
         score += 0
-    if f6 > config['feature 6']['high_risk']:
+    if f6 > int(config['feature 6']['high_risk']):
         score += 0
-    elif f6 >= config['feature 6']['middle_risk_1'] and f6 <= config['feature 6']['middle_risk_2']:
+    elif f6 >= int(config['feature 6']['middle_risk_1']) and f6 <= int(config['feature 6']['middle_risk_2']):
         score += 0.5
-    elif f6 < config['feature 6']['low_risk']:
+    elif f6 < int(config['feature 6']['low_risk']):
         score += 1
-    if f7 >= config['feature 7']['high_risk']:
+    if f7 >= int(config['feature 7']['high_risk']):
         score += 0
-    elif f7 == config['feature 7']['middle_risk']:
+    elif f7 == int(config['feature 7']['middle_risk']):
         score += 0.5
-    elif f7 < config['feature 7']['low_risk']:
+    elif f7 < int(config['feature 7']['low_risk']):
         score += 1
         
     print("Score:", score)
