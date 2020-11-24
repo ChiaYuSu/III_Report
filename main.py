@@ -637,7 +637,8 @@ def final_score():
     elif f7 < int(config['feature 7']['low_risk']):
         f7_score += 1
         
-    score = f1_score * 0.025 + f2_score * 0.05 + f3_score * 0.15 + f4_score * 0.025 + f5_score * 0.5 + f6_score * 0.15 + f7_score * 0.1
+    score = f1_score * float(config['weight']['1']) + f2_score * float(config['weight']['2']) + f3_score * float(config['weight']['3']) + f4_score * float(config['weight']['4']) + f5_score * float(config['weight']['5']) + f6_score * float(config['weight']['6']) + f7_score * float(config['weight']['7'])
+
     score = round(score, 3)
     
     return score
